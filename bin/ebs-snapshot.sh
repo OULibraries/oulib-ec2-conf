@@ -4,9 +4,9 @@ export PATH=$PATH:/usr/local/bin/:/usr/bin
 set -o pipefail
 
 # Grab stuff from the ec2 metadata
-AWS_ACCESS_KEY_ID=`curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials/lib-amz-http-ha | grep "AccessKeyId" | cut -d ":" -f 2 | tr "," " " | xargs`
-AWS_SECRET_ACCESS_KEY=`curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials/lib-amz-http-ha | grep "SecretAccessKey" | cut -d ":" -f 2 | tr "," " " | xargs`
-AWS_SECURITY_TOKEN=`curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials/lib-amz-http-ha | grep "Token" | cut -d ":" -f 2 | tr "," " " | xargs`
+AWS_ACCESS_KEY_ID=`curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials/lib-amz-default | grep "AccessKeyId" | cut -d ":" -f 2 | tr "," " " | xargs`
+AWS_SECRET_ACCESS_KEY=`curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials/lib-amz-default | grep "SecretAccessKey" | cut -d ":" -f 2 | tr "," " " | xargs`
+AWS_SECURITY_TOKEN=`curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials/lib-amz-default | grep "Token" | cut -d ":" -f 2 | tr "," " " | xargs`
 
 export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
 export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
